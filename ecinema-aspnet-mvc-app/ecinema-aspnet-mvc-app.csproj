@@ -7,4 +7,8 @@
     <RootNamespace>ecinema_aspnet_mvc_app</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+  </ItemGroup>
+
 </Project>
