@@ -14,13 +14,13 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.Title                                   
-                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
                                 </h5>
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="@item.PictureUrl" width="100%" alt="@item.Title">
+                        <img src="@item.PictureUrl" width="100%" height="400px" alt="@item.Title">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -53,7 +53,7 @@
                                 <a class="btn btn-outline-primary">
                                     <i class="bi bi-eye-fill"></i>Show Details
                                 </a>
-                                <a class="btn btn-success text-white float-right @((DateTime.Now > item.EndDate) ? "disabled" : "")">                                   
+                                <a class="btn btn-success text-white float-end @((DateTime.Now > item.EndDate) ? "disabled" : "")">                                   
                                 <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
                             </p>
                         </div>
