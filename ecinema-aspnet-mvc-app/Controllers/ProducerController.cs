@@ -1,4 +1,5 @@
 ﻿using ecinema_aspnet_mvc_app.Data;
+using ecinema_aspnet_mvc_app.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,16 +7,16 @@ namespace ecinema_aspnet_mvc_app.Controllers
 {
     public class ProducerController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProducerService _service;
 
-        public ProducerController(AppDbContext context)
+        public ProducerController(IProducerService service)
         {
-            _context = context;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Producers.ToListAsync();
-            return View(data);
+            var producers = await _service.GetAll();
+            return View(producers);
         }
     }
 }

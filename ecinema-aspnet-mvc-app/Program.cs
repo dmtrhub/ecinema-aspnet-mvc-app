@@ -1,11 +1,16 @@
 using ecinema_aspnet_mvc_app.Data;
+using ecinema_aspnet_mvc_app.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ECinema")));
+builder.Services.AddScoped<IActorService, ActorService>();
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ICinemaService, CinemaService>();
+builder.Services.AddScoped<IProducerService, ProducerService>();
 
 var app = builder.Build();
 
@@ -26,7 +31,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Movie}/{action=Index}/{id?}");
 
 AppDbInitializer.Seed(app);
 
