@@ -4,14 +4,14 @@ namespace ecinema_aspnet_mvc_app.Data.Services
 {
     public interface ICinemaService
     {
-        Task<IEnumerable<Cinema>> GetAll();
+        Task<IEnumerable<Cinema>> GetAllAsync();
 
-        Cinema GetById(int id);
+        Task<Cinema> GetByIdAsync(int id);
 
-        void Add(Cinema cinema);
+        Task AddAsync(Cinema cinema);
 
-        Cinema Update(int id,  Cinema newCinema);
+        Task<Cinema> UpdateAsync(int id,  Cinema newCinema);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

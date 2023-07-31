@@ -11,30 +11,36 @@ namespace ecinema_aspnet_mvc_app.Data.Services
         {
             _context = context;
         }
-        public void Add(Producer producer)
+        public async Task AddAsync(Producer producer)
         {
-            throw new NotImplementedException();
+            await _context.Producers.AddAsync(producer);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var deleted = await _context.Producers.FirstOrDefaultAsync(x => x.Id == id);
+            _context.Producers.Remove(deleted);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Producer>> GetAll()
+        public async Task<IEnumerable<Producer>> GetAllAsync()
         {
             var producers = await _context.Producers.ToListAsync();
             return producers;
         }
 
-        public Producer GetById(int id)
+        public async Task<Producer> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var producer = await _context.Producers.FirstOrDefaultAsync(x => x.Id == id);
+            return producer;
         }
 
-        public Producer Update(int id, Producer newProducer)
+        public async Task<Producer> UpdateAsync(int id, Producer newProducer)
         {
-            throw new NotImplementedException();
+            _context.Update(newProducer);
+            await _context.SaveChangesAsync();
+            return newProducer;
         }
     }
 }

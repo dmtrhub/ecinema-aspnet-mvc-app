@@ -1,18 +1,19 @@
 ﻿@model Actor
 
 @{
-    ViewData["Title"] = "Add Actor";
+    ViewData["Title"] = "Update actor";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Add a new actor</h1>
+            <h1>Update Actor</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Create"> 
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
                     <div class="form-group text-center">
                         <img class="border-info rounded-circle" id="PicturePreview" style="max-width: 200px; max-height: 200px" />
                     </div>
@@ -31,26 +32,28 @@
                         <input asp-for="Bio" class="form-control" />
                         <span asp-validation-for="Bio" class="text-danger"></span>
                     </div>
-                    <div style="margin-top: 10px" class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-end"/>
-                        <a class="btn btn-outline secondary" asp-action="Index">Show All</a>
+
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
                     </div>
-                </form>              
+                </form>
             </div>
-            
         </div>
     </div>
 </div>
 
-@section Scripts{
+@section Scripts{ 
     <script>
-        $(document).ready(function(){
-            var preview = document.getElementById('PicturePreview');
-            preview.src = $("#PictureUrl").val();
+
+        $(document).ready(function () {
+            var output = document.getElementById('PicturePreview');
+            output.src = $("#PictureUrl").val();
         })
-        $("#PictureUrl").on("change", function() {
-            var preview = document.getElementById('PicturePreview');
-            preview.src = $(this).val();
+
+        $("#PictureUrl").on("change", function () {
+            var output = document.getElementById('PicturePreview');
+            output.src = $(this).val();
         })
     </script>
 }

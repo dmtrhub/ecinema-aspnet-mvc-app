@@ -12,30 +12,36 @@ namespace ecinema_aspnet_mvc_app.Data.Services
         {
             _context = context;
         }
-        public void Add(Cinema cinema)
+        public async Task AddAsync(Cinema cinema)
         {
-            throw new NotImplementedException();
+            await _context.Cinemas.AddAsync(cinema);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var deleted = await _context.Cinemas.FirstOrDefaultAsync(x => x.Id == id);
+            _context.Cinemas.Remove(deleted);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Cinema>> GetAll()
+        public async Task<IEnumerable<Cinema>> GetAllAsync()
         {
             var cinemas = await _context.Cinemas.ToListAsync();
             return cinemas;
         }
 
-        public Cinema GetById(int id)
+        public async Task<Cinema> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var cinema = await _context.Cinemas.FirstOrDefaultAsync(x => x.Id == id);
+            return cinema;
         }
 
-        public Cinema Update(int id, Cinema newCinema)
+        public async Task<Cinema> UpdateAsync(int id, Cinema newCinema)
         {
-            throw new NotImplementedException();
+            _context.Update(newCinema);
+            await _context.SaveChangesAsync();
+            return newCinema;
         }
     }
 }
