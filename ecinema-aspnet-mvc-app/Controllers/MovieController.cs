@@ -16,7 +16,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var movies = await _service.GetAll();
+            var movies = await _service.GetAllAsync(c => c.Cinema);
             return View(movies);
         }
     }

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ecinema_aspnet_mvc_app.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace ecinema_aspnet_mvc_app.Models
 {
-    public class Actor : IActor
+    public class Actor : IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -17,6 +18,8 @@ namespace ecinema_aspnet_mvc_app.Models
         [Display(Name = "Picture")]
         [Required]
         public string PictureUrl { get; set; }
-        public List<Actor_Movie> Actor_Movies { get; set; }
+
+        //REL
+        public List<Actor_Movie>? Actor_Movies { get; set; }
     }
 }

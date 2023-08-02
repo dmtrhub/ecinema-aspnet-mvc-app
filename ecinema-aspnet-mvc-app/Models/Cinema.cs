@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ecinema_aspnet_mvc_app.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace ecinema_aspnet_mvc_app.Models
 {
-    public class Cinema
+    public class Cinema : IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -10,6 +11,6 @@ namespace ecinema_aspnet_mvc_app.Models
         public string Description { get; set; }
         [Display(Name = "Picture")]
         public string PictureUrl { get; set; }
-        public List<Movie> Movies { get; set; }
+        public List<Movie>? Movies { get; set; }
     }
 }

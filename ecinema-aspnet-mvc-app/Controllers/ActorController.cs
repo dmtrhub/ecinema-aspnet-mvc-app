@@ -54,7 +54,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
         {
             var edit = await _service.GetByIdAsync(id);
             if (edit == null)
-                return View("Not Found");
+                return View("NotFound");
             return View(edit);
         }
 
@@ -74,7 +74,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
         {
             var delete = await _service.GetByIdAsync(id);
             if(delete == null)
-                    return View("Not Found");
+                    return View("NotFound");
             return View(delete);
         }
 
@@ -84,7 +84,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
             var delete = await _service.GetByIdAsync(id);
             if(delete == null)
             {
-                return View("Not Found");
+                return View("NotFound");
             } 
 
             await _service.DeleteAsync(id);

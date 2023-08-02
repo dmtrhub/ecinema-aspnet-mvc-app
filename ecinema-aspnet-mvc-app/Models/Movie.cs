@@ -1,9 +1,10 @@
-﻿using ecinema_aspnet_mvc_app.Data.Enums;
+﻿using ecinema_aspnet_mvc_app.Data.Base;
+using ecinema_aspnet_mvc_app.Data.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ecinema_aspnet_mvc_app.Models
 {
-    public class Movie
+    public class Movie : IEntityBase
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -17,6 +18,6 @@ namespace ecinema_aspnet_mvc_app.Models
         public Cinema Cinema { get; set; }
         public int ProducerId { get; set; }
         public Producer Producer { get; set; }
-        public List<Actor_Movie> Movie_Actors { get; set; }
+        public List<Actor_Movie>? Movie_Actors { get; set; }
     }
 }

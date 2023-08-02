@@ -1,4 +1,5 @@
 using ecinema_aspnet_mvc_app.Data;
+using ecinema_aspnet_mvc_app.Data.Base;
 using ecinema_aspnet_mvc_app.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
