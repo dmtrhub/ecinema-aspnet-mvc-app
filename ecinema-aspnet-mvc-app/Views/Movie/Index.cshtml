@@ -13,8 +13,11 @@
                         <div class="card-header text-white bg-info">
                             <p class="card-text">
                                 <h5 class="card-title">
-                                    @item.Title                                   
-                                    <a class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
+                                    @item.Title
+                                    <div class="float-end">
+                                        <a class="text-white" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a> 
+                                        <a class="text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i></a>
+                                    </div>
                                 </h5>
                             </p>
                         </div>
@@ -50,7 +53,7 @@
                     <div class="col-md-12">
                         <div class="card-footer ">
                             <p class="card-text">
-                                <a class="btn btn-outline-primary">
+                                <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
                                 <a class="btn btn-success text-white float-end @((DateTime.Now > item.EndDate) ? "disabled" : "")">                                   
@@ -63,3 +66,7 @@
         </div>
         }
 </div>
+<div style="position: fixed; right: 30px; bottom: 30px" class="text-white float-end">
+    <a asp-controller="Movie" asp-action="Create" class="btn btn-outline-success">
+        <i class="bi bi-plus-circle-fill"></i> Create Movie
+    </a>

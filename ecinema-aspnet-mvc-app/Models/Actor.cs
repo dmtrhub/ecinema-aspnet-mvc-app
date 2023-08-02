@@ -11,6 +11,7 @@ namespace ecinema_aspnet_mvc_app.Models
         [Required]
         [StringLength(50, MinimumLength = 4, ErrorMessage ="Name was not in a correct format.")]
         public string FullName { get; set; }
+        [Display(Name = "Date of birth")]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Biography")]
         [Required]
