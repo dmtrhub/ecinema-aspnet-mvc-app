@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ecinema_aspnet_mvc_app.Controllers
 {
+    [Authorize]
     public class MovieController : Controller
     {
         private readonly IMovieService _service;
@@ -17,12 +18,14 @@ namespace ecinema_aspnet_mvc_app.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var movies = await _service.GetAllAsync(c => c.Cinema);
             return View(movies);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Filter(string search)
         {
             var movies = await _service.GetAllAsync(c => c.Cinema);
@@ -38,6 +41,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
         }
 
         //GET: Movie/Details/id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var details = await _service.GetMovieByIdAsync(id);

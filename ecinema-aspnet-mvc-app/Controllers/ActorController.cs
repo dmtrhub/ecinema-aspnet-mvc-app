@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ecinema_aspnet_mvc_app.Controllers
 {
+    [Authorize]
     public class ActorController : Controller
     {
         private readonly IActorService _service;
@@ -17,6 +19,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var actors = await _service.GetAllAsync();
@@ -41,6 +44,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
         }
 
         // GET: Actor/Details/id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var details = await _service.GetByIdAsync(id);

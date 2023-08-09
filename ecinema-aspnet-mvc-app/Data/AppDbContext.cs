@@ -1,4 +1,5 @@
 ﻿using ecinema_aspnet_mvc_app.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ecinema_aspnet_mvc_app.Data

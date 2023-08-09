@@ -2,11 +2,13 @@
 using ecinema_aspnet_mvc_app.Data.Base;
 using ecinema_aspnet_mvc_app.Data.Services;
 using ecinema_aspnet_mvc_app.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ecinema_aspnet_mvc_app.Controllers
 {
+    [Authorize]
     public class ProducerController : Controller
     {
         private readonly IProducerService _service;
@@ -15,6 +17,8 @@ namespace ecinema_aspnet_mvc_app.Controllers
         {
             _service = service;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var producers = await _service.GetAllAsync();
@@ -39,6 +43,7 @@ namespace ecinema_aspnet_mvc_app.Controllers
         }
 
         // GET: Producer/Details/id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var details = await _service.GetByIdAsync(id);

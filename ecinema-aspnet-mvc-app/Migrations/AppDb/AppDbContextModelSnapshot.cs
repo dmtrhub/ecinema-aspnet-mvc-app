@@ -47,7 +47,7 @@ namespace ecinema_aspnet_mvc_app.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actors");
+                    b.ToTable("Actors", (string)null);
                 });
 
             modelBuilder.Entity("ecinema_aspnet_mvc_app.Models.Actor_Movie", b =>
@@ -62,7 +62,7 @@ namespace ecinema_aspnet_mvc_app.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Actors_Movies");
+                    b.ToTable("Actors_Movies", (string)null);
                 });
 
             modelBuilder.Entity("ecinema_aspnet_mvc_app.Models.Cinema", b =>
@@ -87,7 +87,7 @@ namespace ecinema_aspnet_mvc_app.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cinemas");
+                    b.ToTable("Cinemas", (string)null);
                 });
 
             modelBuilder.Entity("ecinema_aspnet_mvc_app.Models.Movie", b =>
@@ -134,7 +134,7 @@ namespace ecinema_aspnet_mvc_app.Migrations
 
                     b.HasIndex("ProducerId");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", (string)null);
                 });
 
             modelBuilder.Entity("ecinema_aspnet_mvc_app.Models.Producer", b =>
@@ -162,7 +162,7 @@ namespace ecinema_aspnet_mvc_app.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Producers");
+                    b.ToTable("Producers", (string)null);
                 });
 
             modelBuilder.Entity("ecinema_aspnet_mvc_app.Models.Actor_Movie", b =>
